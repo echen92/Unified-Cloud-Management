@@ -1,0 +1,11 @@
+*.log
+*.pot
+*.pyc
+local_settings.py
+
+# IDE config files
+.idea/
+*.iml
+
+# Node lib folder
+node_modules/

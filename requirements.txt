@@ -1,0 +1,5 @@
+Django
+South
+django-extensions
+django-bootstrap3
+django-allauth

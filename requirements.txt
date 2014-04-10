@@ -3,3 +3,7 @@ South
 django-extensions
 django-bootstrap3
 django-allauth
+google-api-python-client
+simplejson
+uritemplate
+oauth2client

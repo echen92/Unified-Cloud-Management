@@ -1,10 +1,17 @@
 import os
+import dj_database_url
 BASE_DIR = os.path.dirname(os.path.dirname(__file__))
 SECRET_KEY = '@jgu6!u!7dc_6-&jyr9ul7gy13302+wr%zj%k%^)z0z+-^&cr('
 
 DEBUG = True
 TEMPLATE_DEBUG = True
 ALLOWED_HOSTS = ['*']
+
+# Parse database configuration from $DATABASE_URL
+DATABASES['default'] = dj_database_url.config()
+
+# Honor the 'X-Forwarded-Proto' header for request.is_secure()
+SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
 
 INSTALLED_APPS = (
     'django.contrib.admin',
@@ -55,10 +62,6 @@ TEMPLATE_CONTEXT_PROCESSORS = (
 LOGIN_REDIRECT_URL = '/'  # TODO change to the user's page in future
 SOCIALACCOUNT_QUERY_EMAIL = True
 SOCIALACCOUNT_PROVIDERS = {
-    'facebook': {
-        'SCOPE': ['email'],
-        'METHOD': 'js_sdk'  # instead of 'oauth2'
-    },
     'google': {
         'SCOPE': ['email', 'https://www.googleapis.com/auth/plus.login']
     }
@@ -80,16 +83,16 @@ TEMPLATE_DIRS = (
 ROOT_URLCONF = 'finalproject_242.urls'
 WSGI_APPLICATION = 'finalproject_242.wsgi.application'
 
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
-        'USER': '',                      # Not used with sqlite3.
-        'PASSWORD': '',                  # Not used with sqlite3.
-        'HOST': '',                      # Set to empty string for localhost. Not used with sqlite3.
-        'PORT': '',
-    }
-}
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.sqlite3',
+#         'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+#         'USER': '',                      # Not used with sqlite3.
+#         'PASSWORD': '',                  # Not used with sqlite3.
+#         'HOST': '',                      # Set to empty string for localhost. Not used with sqlite3.
+#         'PORT': '',
+#     }
+# }
 
 LANGUAGE_CODE = 'en-us'
 TIME_ZONE = 'UTC'
@@ -97,4 +100,9 @@ USE_I18N = True
 USE_L10N = True
 USE_TZ = True
 
+STATIC_ROOT = 'staticfiles'
 STATIC_URL = '/static/'
+STATICFILES_DIRS = (
+    os.path.join(BASE_DIR, 'static'),
+)
+

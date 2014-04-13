@@ -67,7 +67,7 @@ def email_signup(request):
         userprofile.save()
         auth_user = authenticate(username=username_md5(email), password=password)
         dj_login(request, auth_user)
-        return redirect('/accounts/dashboard')
+        return redirect('/')
     else:
         return render(request, 'accounts/signup.html')
 

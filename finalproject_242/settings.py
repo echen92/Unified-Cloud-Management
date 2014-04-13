@@ -92,7 +92,9 @@ DATABASES = {
 }
 
 # Parse database configuration from $DATABASE_URL
-DATABASES['default'] = dj_database_url.config()
+# DATABASES['default'] = dj_database_url.config()
+if os.getcwd() == "/app":
+    DATABASES = {'default': dj_database_url.config(default='postgres://localhost')}
 
 LANGUAGE_CODE = 'en-us'
 TIME_ZONE = 'UTC'

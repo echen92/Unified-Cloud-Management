@@ -53,6 +53,7 @@ TEMPLATE_CONTEXT_PROCESSORS = (
     "allauth.account.context_processors.account",
     "allauth.socialaccount.context_processors.socialaccount",
     "django.contrib.messages.context_processors.messages",
+    'django.core.context_processors.static'
 )
 
 # auth and allauth settings
@@ -102,7 +103,6 @@ USE_I18N = True
 USE_L10N = True
 USE_TZ = True
 
-STATIC_ROOT = 'staticfiles'
 STATIC_URL = '/static/'
 STATICFILES_DIRS = (
     os.path.join(BASE_DIR, 'static'),

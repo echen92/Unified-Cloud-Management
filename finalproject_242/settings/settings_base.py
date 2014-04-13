@@ -1,11 +1,7 @@
 import os
-import dj_database_url
-BASE_DIR = os.path.dirname(os.path.dirname(__file__))
+BASE_DIR = os.path.realpath(os.path.dirname(__file__))
+    # os.path.dirname(os.path.dirname(__file__))
 SECRET_KEY = '@jgu6!u!7dc_6-&jyr9ul7gy13302+wr%zj%k%^)z0z+-^&cr('
-
-DEBUG = True
-TEMPLATE_DEBUG = True
-ALLOWED_HOSTS = ['*']
 
 # Honor the 'X-Forwarded-Proto' header for request.is_secure()
 SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
@@ -75,27 +71,11 @@ ACCOUNT_EMAIL_REQUIRED = True
 ACCOUNT_USERNAME_REQUIRED = False
 
 TEMPLATE_DIRS = (
-    os.path.join(BASE_DIR, 'templates'),
+    os.path.join(BASE_DIR, '../../templates'),
 )
 
 ROOT_URLCONF = 'finalproject_242.urls'
 WSGI_APPLICATION = 'finalproject_242.wsgi.application'
-
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
-        'USER': '',                      # Not used with sqlite3.
-        'PASSWORD': '',                  # Not used with sqlite3.
-        'HOST': '',                      # Set to empty string for localhost. Not used with sqlite3.
-        'PORT': '',
-    }
-}
-
-# Parse database configuration from $DATABASE_URL
-# DATABASES['default'] = dj_database_url.config()
-if os.getcwd() == "/app":
-    DATABASES = {'default': dj_database_url.config(default='postgres://localhost')}
 
 LANGUAGE_CODE = 'en-us'
 TIME_ZONE = 'UTC'
@@ -105,6 +85,5 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 STATICFILES_DIRS = (
-    os.path.join(BASE_DIR, 'static'),
+    os.path.join(BASE_DIR, '../../static'),
 )
-

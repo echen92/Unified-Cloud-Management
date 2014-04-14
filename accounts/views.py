@@ -77,7 +77,7 @@ def dashboard(request):
     """
     View for the dashboard
     """
-    return render(request, 'devoops/dashboard.html')
+    return render(request, 'website/dashboard.html')
 
 
 def check_valid_password(pw, pw_conf):

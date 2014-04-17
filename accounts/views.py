@@ -1,4 +1,4 @@
-import hashlib
+import hashlib, dropbox
 from django.contrib.auth import authenticate
 from django.contrib.auth import login as dj_login, logout as dj_logout
 from django.core.exceptions import ObjectDoesNotExist
@@ -23,7 +23,7 @@ def login(request):
             if user is not None and user.is_active:
                 dj_login(request, user)
                 messages.add_message(request, messages.SUCCESS, 'Login successful!')
-                return redirect('/accounts/dashboard')
+                return redirect('/dashboard')
             messages.add_message(request, messages.ERROR, 'Invalid login credentials!')
             return redirect('/accounts/login/')
         except ObjectDoesNotExist:
@@ -41,9 +41,9 @@ def logout(request):
 
 
 @login_required
-def s3storagehandler(request, access_key, secret_key):
+def connect_amazon(request, access_key, secret_key):
     """
-    Handles uploads and downloads to/from Amazon S3 service
+    Connect Amazon account to user profile
     """
     if request.method == 'POST':
         conn = S3Connection(access_key, secret_key)
@@ -80,14 +80,6 @@ def email_signup(request):
         return redirect('/')
     else:
         return render(request, 'accounts/signup.html')
-
-
-@login_required
-def dashboard(request):
-    """
-    View for the dashboard
-    """
-    return render(request, 'website/dashboard.html')
 
 
 def check_valid_password(pw, pw_conf):

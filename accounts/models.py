@@ -18,7 +18,6 @@ class CredentialsAdmin(admin.ModelAdmin):
 admin.site.register(CredentialsModel, CredentialsAdmin)
 
 
-#  Actual models start below, above = auth stuff
 class Service(models.Model):
     name = models.CharField(max_length=50)
 

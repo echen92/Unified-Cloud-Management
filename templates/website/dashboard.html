@@ -3,7 +3,7 @@
 <html lang="en">
 	<head>
 		<meta charset="utf-8">
-		<title>CS242 FINAL PROJ</title>
+		<title>CS242 FINAL PROJECT</title>
 		<meta name="description" content="description">
 		<meta name="author" content="DevOOPS">
 		<meta name="viewport" content="width=device-width, initial-scale=1">
@@ -50,13 +50,14 @@
 	<div class="container-fluid expanded-panel">
 		<div class="row">
 			<div id="logo" class="col-xs-12 col-sm-2">
-				<a href="/accounts/dashboard/">CS242 FINAL PROJ</a>
+				<a href="/accounts/dashboard/">CS242-FINALPROJ</a>
 			</div>
 			<div id="top-panel" class="col-xs-12 col-sm-10">
 				<div class="row">
                     {# Removing this div results in avatar misaligned #}
 					<div class="col-xs-8 col-sm-4">
-                        <p>PUT SOME BUTTONS AND STUFF HERE</p>
+                        {# TODO: Fill this empty space with buttons or something #}
+                        <p>PUT SOME BUTTONS OR SOMETHING HERE</p>
 {#						<a href="#" class="show-sidebar">#}
 {#						  <i class="fa fa-bars"></i>#}
 {#						</a>#}
@@ -75,6 +76,7 @@
 									<i class="fa fa-angle-down pull-right"></i>
 									<div class="user-mini pull-right">
 										<span class="welcome">Welcome,</span>
+                                        {# TODO: Display user's actual name here #}
 										<span>USER HERE</span>
 									</div>
 								</a>
@@ -82,6 +84,7 @@
 									<li>
 										<a href="#">
 											<i class="fa fa-cog"></i>
+                                            {# TODO: Modal for settings to change email/pw #}
 											<span class="hidden-sm text">Settings</span>
 										</a>
 									</li>
@@ -112,15 +115,46 @@
 						<span class="hidden-xs">Dashboard</span>
 					</a>
 				</li>
+                {# TODO: Link services to respective file view pages using AJAXcontentloader in devoops.js #}
                 <li class="dropdown">
 					<a href="#" class="dropdown-toggle">
 						<i class="fa fa-pencil-square-o"></i>
-						 <span class="hidden-xs">Services</span>
+						 <span class="hidden-xs">Cloud Services</span>
 					</a>
 					<ul class="dropdown-menu">
-						<li><a target="_blank" href="https://www.dropbox.com">Dropbox</a></li>
-						<li><a target="_blank" href="https://drive.google.com">Google</a></li>
-						<li><a target="_blank" href="http://aws.amazon.com/s3/">Amazon</a></li>
+						<li class="dropdown">
+                            <a href="#" class="dropdown-toggle">
+								<i class="fa fa-plus-square"></i>
+								<span class="hidden-xs">Dropbox</span>
+							</a>
+                            <ul class="dropdown-menu">
+                                <li><a target="_blank" href="https://www.dropbox.com">Service homepage</a></li>
+								<li><a href="{% provider_login_url "dropbox" process="connect" next="/dashboard" %}">Connect with service</a></li>
+								<li><a href="#">My files</a></li>
+                            </ul>
+                        </li>
+						<li class="dropdown">
+                            <a href="#" class="dropdown-toggle">
+								<i class="fa fa-plus-square"></i>
+								<span class="hidden-xs">Google</span>
+							</a>
+                            <ul class="dropdown-menu">
+                                <li><a target="_blank" href="https://drive.google.com">Service homepage</a></li>
+								<li><a href="{% provider_login_url "google" process="connect" next="/dashboard" %}">Connect with service</a></li>
+								<li><a href="#">My files</a></li>
+                            </ul>
+                        </li>
+                        <li class="dropdown">
+                            <a href="#" class="dropdown-toggle">
+								<i class="fa fa-plus-square"></i>
+								<span class="hidden-xs">Amazon</span>
+							</a>
+                            <ul class="dropdown-menu">
+                                <li><a target="_blank" href="https://aws.amazon.com/s3/">Service homepage</a></li>
+								<li><a target="" href="{% provider_login_url "amazon" process="connect" next="/dashboard" %}">Connect with service</a></li>
+								<li><a href="#">My files</a></li>
+                            </ul>
+                        </li>
 					</ul>
 				</li>
 				<li class="dropdown">

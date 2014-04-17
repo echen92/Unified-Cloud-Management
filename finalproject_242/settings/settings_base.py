@@ -25,6 +25,7 @@ INSTALLED_APPS = (
     'allauth.socialaccount.providers.google',
     'website',
     'accounts',
+    'dropbox',
 )
 
 MIDDLEWARE_CLASSES = (
@@ -72,6 +73,7 @@ EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
 ACCOUNT_AUTHENTICATION_METHOD = 'email'
 ACCOUNT_EMAIL_REQUIRED = True
 ACCOUNT_USERNAME_REQUIRED = False
+ACCOUNT_EMAIL_VERIFICATION = 'none'
 
 TEMPLATE_DIRS = (
     os.path.join(BASE_DIR, '../../templates'),

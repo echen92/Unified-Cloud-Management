@@ -9,6 +9,7 @@ from django.forms import EmailField
 from django.core.exceptions import ValidationError
 from django.contrib import messages
 from django.contrib.auth.decorators import login_required
+from boto.s3.connection import S3Connection
 
 
 def login(request):
@@ -22,7 +23,7 @@ def login(request):
             if user is not None and user.is_active:
                 dj_login(request, user)
                 messages.add_message(request, messages.SUCCESS, 'Login successful!')
-                return redirect('/')
+                return redirect('/accounts/dashboard')
             messages.add_message(request, messages.ERROR, 'Invalid login credentials!')
             return redirect('/accounts/login/')
         except ObjectDoesNotExist:
@@ -37,6 +38,15 @@ def logout(request):
     dj_logout(request)
     messages.add_message(request, messages.SUCCESS, 'You have successfully logged out!')
     return redirect('/')
+
+
+@login_required
+def s3storagehandler(request, access_key, secret_key):
+    """
+    Handles uploads and downloads to/from Amazon S3 service
+    """
+    if request.method == 'POST':
+        conn = S3Connection(access_key, secret_key)
 
 
 def email_signup(request):

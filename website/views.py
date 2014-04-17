@@ -5,7 +5,10 @@ import json, dropbox
 
 
 def index(request):
-    return render(request, 'website/index.html')
+    if request.user.is_authenticated():
+        return redirect('/dashboard')
+    else:
+        return render(request, 'website/index.html')
 
 @login_required
 def dashboard(request):

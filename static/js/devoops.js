@@ -2423,7 +2423,7 @@ $(document).ready(function () {
 		var header = 'Enter current username and password';
 		var form = $('<div class="form-group"><label class="control-label">Username</label><input type="text" class="form-control" name="username" /></div>'+
 					'<div class="form-group"><label class="control-label">Password</label><input type="password" class="form-control" name="password" /></div>');
-		var button = $('<div class="text-center"><a href="index.html" class="btn btn-primary">Unlock</a></div>');
+		var button = $('<div class="text-center"><a href="/dashboard" class="btn btn-primary">Unlock</a></div>');
 		OpenModalBox(header, form, button);
 	});
 });

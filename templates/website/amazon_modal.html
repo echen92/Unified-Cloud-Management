@@ -1,0 +1,25 @@
+<!-- Add Amazon creds modal -->
+<div class="modal fade" id="amazon-credentials" tabindex="-1" role="dialog" aria-labelledby="cred-modal-label" aria-hidden="true">
+  <div class="modal-dialog modal-sm">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+        <h4 class="modal-title" id="cred-modal-label">Connect Amazon credentials</h4>
+      </div>
+      <div class="modal-body">
+        <form role="form" id="creds-form" method="POST" action="/accounts/connect_amazon">{% csrf_token %}
+          <div class="form-group">
+            <label for="client-id">Client ID</label>
+            <input type="text" class="form-control" name="client_id" id="client-id" placeholder="Client ID"><br/>
+            <label for="secret-key">Secret key</label>
+            <input type="text" class="form-control" name="secret_key" id="secret-key" placeholder="Secret key"><br/>
+            <button id="confirm-add-creds" class="btn btn-primary" type="submit">Add creds</button>
+          </div>
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button class="btn btn-default" type="button" data-dismiss="modal">Cancel</button>
+      </div>
+    </div>
+  </div>
+</div>

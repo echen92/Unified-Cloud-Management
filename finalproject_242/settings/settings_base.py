@@ -66,14 +66,14 @@ SOCIALACCOUNT_PROVIDERS = {
 }
 
 # TODO localize Required by allauth, this is based on the id of the database row
-SITE_ID = 3  # localhost
+SITE_ID = 1  # localhost
 
 # Allauth tries to send a verification email
 EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
 ACCOUNT_AUTHENTICATION_METHOD = 'email'
 ACCOUNT_EMAIL_REQUIRED = True
 ACCOUNT_USERNAME_REQUIRED = False
-ACCOUNT_EMAIL_VERIFICATION = 'none'
+# ACCOUNT_EMAIL_VERIFICATION = 'none'
 
 TEMPLATE_DIRS = (
     os.path.join(BASE_DIR, '../../templates'),

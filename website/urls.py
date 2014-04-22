@@ -1,7 +1,7 @@
 from django.conf.urls import patterns, url
-import website.views
+import views
 
 urlpatterns = patterns('',
-                       url(r'^$', website.views.index, name='website_index'),
-                       url(r'^dashboard', website.views.dashboard, name='dashboard'),
+                       url(r'^$', views.index, name='website_index'),
+                       url(r'^dashboard', views.dashboard, name='dashboard'),
 )

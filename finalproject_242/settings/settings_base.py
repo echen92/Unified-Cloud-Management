@@ -21,9 +21,9 @@ INSTALLED_APPS = (
     'allauth.account',
     'allauth.socialaccount',
     'allauth.socialaccount.providers.dropbox',
-    'allauth.socialaccount.providers.amazon',
     'allauth.socialaccount.providers.google',
     'website',
+    'amazon',
     'accounts',
     'dropbox',
 )
@@ -59,9 +59,7 @@ LOGIN_REDIRECT_URL = '/'  # TODO change to the user's page in future
 SOCIALACCOUNT_QUERY_EMAIL = True
 SOCIALACCOUNT_PROVIDERS = {
     'google': {
-        'SCOPE': ['email', 'profile', 'https://www.googleapis.com/auth/drive',
-                  'https://www.googleapis.com/auth/drive.file',
-                  'https://www.googleapis.com/auth/drive.metadata.readonly']
+        'SCOPE': ['email', 'profile', 'https://www.googleapis.com/auth/drive']
     }
 }
 

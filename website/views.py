@@ -1,7 +1,6 @@
 from django.shortcuts import render, redirect
 from django.contrib.auth.decorators import login_required
 from django.http import HttpResponse
-import json, dropbox
 
 
 def index(request):
@@ -13,3 +12,4 @@ def index(request):
 @login_required
 def dashboard(request):
     return render(request, 'website/dashboard.html')
+

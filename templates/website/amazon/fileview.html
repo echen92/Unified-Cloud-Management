@@ -1,0 +1,105 @@
+{% load bootstrap3 %}
+
+<table class="table table-condensed table-responsive" id="rounded-corner" summary="">
+    <thead>
+    	<tr>
+        	<th scope="col" class="rounded-company"></th>
+            <th scope="col" class="rounded">Name</th>
+            <th scope="col" class="rounded">Type</th>
+            <th scope="col" class="rounded">Size</th>
+            <th scope="col" class="rounded">Date</th>
+{#            <th scope="col" class="rounded">Edit</th>#}
+            <th scope="col" class="rounded-q4">Delete</th>
+        </tr>
+    </thead>
+{#    <tfoot>#}
+{#    	<tr>#}
+{#        	<td colspan="6" class="rounded-foot-left"><em>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut.</em></td>#}
+{#        	<td class="rounded-foot-right">&nbsp;</td>#}
+{##}
+{#        </tr>#}
+{#    </tfoot>#}
+    <tbody>
+        {% for f in folders %}
+            <tr>
+                <td><input type="checkbox"></td>
+                <td>{{ f }}</td>
+                <td>Folder</td>
+            </tr>
+{#            {% for fi in files %}#}
+{#                <tr>#}
+{#                    <td><input type="checkbox"></td>#}
+{#                    <td></td>#}
+{#                    <td></td>#}
+{#                    <td>{{ fi }}</td>#}
+{#                </tr>#}
+{#            {% endfor %}#}
+        {% endfor %}
+
+    	<tr>
+        	<td><input type="checkbox" name=""></td>
+            <td>Product name</td>
+            <td>details</td>
+            <td>150$</td>
+            <td>12/05/2010</td>
+            <td>DELETE</td>
+            <!-- <td><a href="#"><img src="images/user_edit.png" alt="" title="" border="0"></a></td> -->
+            <!-- <td><a href="#" class="ask"><img src="images/trash.png" alt="" title="" border="0"></a></td> -->
+        </tr>
+        
+    	<tr>
+        	<td><input type="checkbox" name=""></td>
+            <td>Product name</td>
+            <td>details</td>
+            <td>150$</td>
+            <td>12/05/2010</td>
+
+            <!-- <td><a href="#"><img src="images/user_edit.png" alt="" title="" border="0"></a></td> -->
+            <!-- <td><a href="#" class="ask"><img src="images/trash.png" alt="" title="" border="0"></a></td> -->
+        </tr> 
+        
+    	<tr>
+        	<td><input type="checkbox" name=""></td>
+            <td>Product name</td>
+            <td>details</td>
+            <td>150$</td>
+            <td>12/05/2010</td>
+
+            <!-- <td><a href="#"><img src="images/user_edit.png" alt="" title="" border="0"></a></td> -->
+            <!-- <td><a href="#" class="ask"><img src="images/trash.png" alt="" title="" border="0"></a></td> -->
+        </tr>
+        
+    	<tr>
+        	<td><input type="checkbox" name=""></td>
+            <td>Product name</td>
+            <td>details</td>
+            <td>150$</td>
+            <td>12/05/2010</td>
+
+            <!-- <td><a href="#"><img src="images/user_edit.png" alt="" title="" border="0"></a></td> -->
+            <!-- <td><a href="#" class="ask"><img src="images/trash.png" alt="" title="" border="0"></a></td> -->
+        </tr>  
+    	<tr>
+        	<td><input type="checkbox" name=""></td>
+            <td>Product name</td>
+            <td>details</td>
+            <td>150$</td>
+            <td>12/05/2010</td>
+
+            <!-- <td><a href="#"><img src="images/user_edit.png" alt="" title="" border="0"></a></td> -->
+            <!-- <td><a href="#" class="ask"><img src="images/trash.png" alt="" title="" border="0"></a></td> -->
+        </tr>
+        
+    	<tr>
+        	<td><input type="checkbox" name=""></td>
+            <td>Product name</td>
+            <td>details</td>
+            <td>150$</td>
+            <td>12/05/2010</td>
+
+            <!-- <td><a href="#"><img src="images/user_edit.png" alt="" title="" border="0"></a></td> -->
+            <!-- <td><a href="#" class="ask"><img src="images/trash.png" alt="" title="" border="0"></a></td> -->
+        </tr>    
+        
+    </tbody>
+</table>

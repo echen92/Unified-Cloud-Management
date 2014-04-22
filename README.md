@@ -21,7 +21,6 @@ Spike code to make sure API can be properly used
 Week 2
 _____________
 Begin integrating services into app
-View files currently in storage, free space available
 Upload and download files to/from the service
 Create views necessary for functionality and dialogs (templates for storage contents, dialog confirmations, etc)
 
@@ -29,10 +28,11 @@ Create views necessary for functionality and dialogs (templates for storage cont
 Week 3
 _____________
 Integrate jQuery/AJAX to make all operations inlined
-Play/view/load content from files/media within the drive (stream music/video, display text)
+View files currently in storage, free space available
+Amazon S3: Finish up file views/upload/download files
 
 
 Week 4
 _____________
 Add file/folder sharing functionality (manage permissions and share link)
-Realtime editing of files
+Play/view/load content from files/media within the drive (stream music/video, display text)

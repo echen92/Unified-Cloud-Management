@@ -1,6 +1,6 @@
 {% load bootstrap3 %}
 {% load socialaccount %}
-{% include 'website/amazon_modal.html'%}
+{% include 'website/amazon/amazon_modal.html'%}
 <!DOCTYPE html>
 <html lang="en">
 	<head>
@@ -59,7 +59,8 @@
                     {# Removing this div results in avatar misaligned #}
 					<div class="col-xs-8 col-sm-4">
                         {# TODO: Fill this empty space with buttons or something #}
-                        <p>PUT SOME BUTTONS OR SOMETHING HERE</p>
+{#                        <p>PUT SOME BUTTONS OR SOMETHING HERE</p>#}
+                        <button type="button" ></button>
 {#						<a href="#" class="show-sidebar">#}
 {#						  <i class="fa fa-bars"></i>#}
 {#						</a>#}
@@ -132,7 +133,9 @@
                             <ul class="dropdown-menu">
                                 <li><a target="_blank" href="https://www.dropbox.com">Service homepage</a></li>
 								<li><a href="{% provider_login_url "dropbox" process="connect" next="/dashboard" %}">Connect with service</a></li>
-								<li><a href="#">My files</a></li>
+								<li>
+                                    <a href="/amazon/files" class="active ajax-link">TestFiles</a>
+								</li>
                             </ul>
                         </li>
 						<li class="dropdown">

@@ -3,6 +3,8 @@ BASE_DIR = os.path.dirname(os.path.dirname(__file__))
 DEBUG = True
 TEMPLATE_DEBUG = True
 ALLOWED_HOSTS = ['*']
+STATIC_ROOT = "staticfiles"
+
 
 DATABASES = {
     'default': {

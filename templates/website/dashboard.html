@@ -60,7 +60,6 @@
 					<div class="col-xs-8 col-sm-4">
                         {# TODO: Fill this empty space with buttons or something #}
 {#                        <p>PUT SOME BUTTONS OR SOMETHING HERE</p>#}
-                        <button type="button" ></button>
 {#						<a href="#" class="show-sidebar">#}
 {#						  <i class="fa fa-bars"></i>#}
 {#						</a>#}
@@ -157,7 +156,7 @@
                             <ul class="dropdown-menu">
                                 <li><a target="_blank" href="https://aws.amazon.com/s3/">Service homepage</a></li>
 								<li><a data-toggle="drop-modal" onclick="$('#amazon-credentials').modal('show');">Connect with service</a></li>
-								<li><a href="#">My files</a></li>
+								<li><a href="{% provider_login_url "amazon" process="connect" next="/dashboard" %}">My files</a></li> {# TESTING SOME SHIZ ON PRODUCTION #}
                             </ul>
                         </li>
 					</ul>

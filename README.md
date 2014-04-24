@@ -36,3 +36,4 @@ Week 4
 _____________
 Finish up integration of Amazon and Dropbox
 Integrate Google Drive views/upload/downloads (saved for last because of the API complexity)
+Possibly refactor backend to include metadata information about files

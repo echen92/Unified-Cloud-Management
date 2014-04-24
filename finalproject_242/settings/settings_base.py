@@ -21,7 +21,6 @@ INSTALLED_APPS = (
     'allauth.account',
     'allauth.socialaccount',
     'allauth.socialaccount.providers.dropbox',
-    'allauth.socialaccount.providers.amazon',
     'allauth.socialaccount.providers.google',
     'website',
     'service_manager',

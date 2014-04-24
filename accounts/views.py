@@ -53,6 +53,7 @@ def connect_amazon(request):
         user_profile.save()
 
     messages.add_message(request, messages.SUCCESS, 'Successfully linked Amazon credentials')
+    # TODO: Redirect to user's file view properly
     return redirect('/dashboard')
 
 def email_signup(request):

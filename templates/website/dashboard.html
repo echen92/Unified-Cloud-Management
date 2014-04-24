@@ -60,10 +60,10 @@
                         <a href="#" class="show-sidebar">
                             <i class="fa fa-bars"></i>
                         </a>
-                        {% comment %}<div id="search">
+                        <div id="search">
                             <input type="text" placeholder="search"/>
                             <i class="fa fa-search"></i>
-                        </div>{% endcomment %}
+                        </div>
                     </div>
 					<div class="col-xs-4 col-sm-8 top-panel-right">
 						<ul class="nav navbar-nav pull-right panel-menu">
@@ -119,6 +119,7 @@
 						<i class="fa fa-pencil-square-o"></i>
 						 <span class="hidden-xs">Cloud Services</span>
 					</a>
+                    {# TODO: HIDE CONNECT BUTTONS IF A USER IS ALREADY CONNECTED TO THE SERVICE#}
 					<ul class="dropdown-menu">
 						<li class="dropdown">
                             <a href="#" class="dropdown-toggle">
@@ -127,7 +128,7 @@
 							</a>
                             <ul class="dropdown-menu">
                                 <li><a target="_blank" href="https://www.dropbox.com">Service homepage</a></li>
-								<li><a href="{% provider_login_url "dropbox" process="connect" next="/dashboard" %}">Connect with service</a></li>
+								<li><a href="{% provider_login_url "dropbox" process="connect" next="/service_manager/dropbox/upgrade_token" %}">Connect with service</a></li>
 								<li>
                                     <a href="/service_manager/dropbox/files" class="active ajax-link">My files</a>
 								</li>
@@ -140,7 +141,7 @@
 							</a>
                             <ul class="dropdown-menu">
                                 <li><a target="_blank" href="https://drive.google.com">Service homepage</a></li>
-								<li><a href="{% provider_login_url "google" process="connect" next="/dashboard" %}">Connect with service</a></li>
+								<li><a href="{% provider_login_url "google" process="connect" next="/service_manager/google/files" %}">Connect with service</a></li>
 								<li><a href="/service_manager/google/files" class="active ajax-link">My files</a></li>
                             </ul>
                         </li>

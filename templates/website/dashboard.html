@@ -1,6 +1,6 @@
 {% load bootstrap3 %}
 {% load socialaccount %}
-{% include 'website/amazon/amazon_modal.html'%}
+
 <!DOCTYPE html>
 <html lang="en">
 	<head>
@@ -56,18 +56,15 @@
 			</div>
 			<div id="top-panel" class="col-xs-12 col-sm-10">
 				<div class="row">
-                    {# Removing this div results in avatar misaligned #}
-					<div class="col-xs-8 col-sm-4">
-                        {# TODO: Fill this empty space with buttons or something #}
-{#                        <p>PUT SOME BUTTONS OR SOMETHING HERE</p>#}
-{#						<a href="#" class="show-sidebar">#}
-{#						  <i class="fa fa-bars"></i>#}
-{#						</a>#}
-{#						<div id="search">#}
-{#							<input type="text" placeholder="search"/>#}
-{#							<i class="fa fa-search"></i>#}
-{#						</div>#}
-					</div>
+                    <div class="col-xs-8 col-sm-4">
+                        <a href="#" class="show-sidebar">
+                            <i class="fa fa-bars"></i>
+                        </a>
+                        {% comment %}<div id="search">
+                            <input type="text" placeholder="search"/>
+                            <i class="fa fa-search"></i>
+                        </div>{% endcomment %}
+                    </div>
 					<div class="col-xs-4 col-sm-8 top-panel-right">
 						<ul class="nav navbar-nav pull-right panel-menu">
 							<li class="dropdown">
@@ -78,8 +75,7 @@
 									<i class="fa fa-angle-down pull-right"></i>
 									<div class="user-mini pull-right">
 										<span class="welcome">Welcome,</span>
-                                        {# TODO: Display user's actual name here #}
-										<span>USER HERE</span>
+										<span>{{ user.email }}</span>
 									</div>
 								</a>
 								<ul class="dropdown-menu">
@@ -133,7 +129,7 @@
                                 <li><a target="_blank" href="https://www.dropbox.com">Service homepage</a></li>
 								<li><a href="{% provider_login_url "dropbox" process="connect" next="/dashboard" %}">Connect with service</a></li>
 								<li>
-                                    <a href="/amazon/files" class="active ajax-link">TestFiles</a>
+                                    <a href="/service_manager/dropbox/files" class="active ajax-link">My files</a>
 								</li>
                             </ul>
                         </li>
@@ -145,7 +141,7 @@
                             <ul class="dropdown-menu">
                                 <li><a target="_blank" href="https://drive.google.com">Service homepage</a></li>
 								<li><a href="{% provider_login_url "google" process="connect" next="/dashboard" %}">Connect with service</a></li>
-								<li><a href="#">My files</a></li>
+								<li><a href="/service_manager/google/files" class="active ajax-link">My files</a></li>
                             </ul>
                         </li>
                         <li class="dropdown">
@@ -155,8 +151,9 @@
 							</a>
                             <ul class="dropdown-menu">
                                 <li><a target="_blank" href="https://aws.amazon.com/s3/">Service homepage</a></li>
+                                {% include 'website/amazon/amazon_modal.html'%}
 								<li><a data-toggle="drop-modal" onclick="$('#amazon-credentials').modal('show');">Connect with service</a></li>
-								<li><a href="{% provider_login_url "amazon" process="connect" next="/dashboard" %}">My files</a></li> {# TESTING SOME SHIZ ON PRODUCTION #}
+								<li><a href="/service_manager/amazon/files" class="active ajax-link">My files</a></li>
                             </ul>
                         </li>
 					</ul>

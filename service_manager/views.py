@@ -9,7 +9,7 @@ from django.shortcuts import render, redirect
 
 
 @login_required
-def file_view(request):
+def amazon_file_view(request):
     try:
         user = request.user
         profile = UserProfile.objects.get(user=user)
@@ -46,3 +46,13 @@ def file_view(request):
     except:
         print 'AMAZON CONNECTION FAILED'
     return render(request, 'website/amazon/fileview.html')
+
+
+@login_required
+def dropbox_file_view(request):
+    return render(request, 'website/dropbox/fileview.html')
+
+
+@login_required
+def google_file_view(request):
+    return render(request, 'website/google/fileview.html')

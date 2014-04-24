@@ -4,12 +4,11 @@
       <input type="hidden" name="key" value="${filename}">
       <input type="hidden" name="AWSAccessKeyId" value="{{ clientid }}">
       <input type="hidden" name="acl" value="private">
-      <input type="hidden" name="success_action_redirect" value="http://localhost:8000/dashboard#/amazon/files">
+      <input type="hidden" name="success_action_redirect" value="http://localhost:8000/dashboard#/service_manager/amazon/files">
       <input type="hidden" name="policy" value={{ policy }}>
       <input type="hidden" name="signature" value={{ signature }}>
 {#      <input type="hidden" name="Content-Type" value="file">#}
       <!-- Include any additional input fields here -->
-{{ bucketname }}, {{ clientid }}
       File to upload to S3:
       <input name="file" type="file">
       <input type="submit" value="Upload File to S3">
@@ -26,13 +25,13 @@
             <th scope="col" class="rounded-q4">Delete</th>
         </tr>
     </thead>
-{#    <tfoot>#}
-{#    	<tr>#}
-{#        	<td colspan="6" class="rounded-foot-left"><em>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut.</em></td>#}
-{#        	<td class="rounded-foot-right">&nbsp;</td>#}
-{##}
-{#        </tr>#}
-{#    </tfoot>#}
+    <tfoot>
+    	<tr>
+        	<td colspan="6" class="rounded-foot-left"><em>Folders are represented in the format "foldername/" prepended to filename</em></td>
+        	<td class="rounded-foot-right">&nbsp;</td>
+
+        </tr>
+    </tfoot>
     <tbody>
 {#        {% for f in folders %}#}
 {#            <tr>#}
@@ -43,7 +42,7 @@
             {% for fi in files %}
                 <tr>
                     <td><input type="checkbox"></td>
-                    <td>{{ fi }}</td>
+                    <td><a style="text-decoration: none" href="https://{{ bucketname }}.s3.amazonaws.com/{{ fi }}">{{ fi }}</a></td>
                     <td></td>
                     <td></td>
                     <td></td>
@@ -51,71 +50,5 @@
                 </tr>
             {% endfor %}
 {#        {% endfor %}#}
-
-    	<tr>
-        	<td><input type="checkbox" name=""></td>
-            <td>Product name</td>
-            <td>details</td>
-            <td>150$</td>
-            <td>12/05/2010</td>
-            <td>DELETE</td>
-            <!-- <td><a href="#"><img src="images/user_edit.png" alt="" title="" border="0"></a></td> -->
-            <!-- <td><a href="#" class="ask"><img src="images/trash.png" alt="" title="" border="0"></a></td> -->
-        </tr>
-        
-    	<tr>
-        	<td><input type="checkbox" name=""></td>
-            <td>Product name</td>
-            <td>details</td>
-            <td>150$</td>
-            <td>12/05/2010</td>
-
-            <!-- <td><a href="#"><img src="images/user_edit.png" alt="" title="" border="0"></a></td> -->
-            <!-- <td><a href="#" class="ask"><img src="images/trash.png" alt="" title="" border="0"></a></td> -->
-        </tr> 
-        
-    	<tr>
-        	<td><input type="checkbox" name=""></td>
-            <td>Product name</td>
-            <td>details</td>
-            <td>150$</td>
-            <td>12/05/2010</td>
-
-            <!-- <td><a href="#"><img src="images/user_edit.png" alt="" title="" border="0"></a></td> -->
-            <!-- <td><a href="#" class="ask"><img src="images/trash.png" alt="" title="" border="0"></a></td> -->
-        </tr>
-        
-    	<tr>
-        	<td><input type="checkbox" name=""></td>
-            <td>Product name</td>
-            <td>details</td>
-            <td>150$</td>
-            <td>12/05/2010</td>
-
-            <!-- <td><a href="#"><img src="images/user_edit.png" alt="" title="" border="0"></a></td> -->
-            <!-- <td><a href="#" class="ask"><img src="images/trash.png" alt="" title="" border="0"></a></td> -->
-        </tr>  
-    	<tr>
-        	<td><input type="checkbox" name=""></td>
-            <td>Product name</td>
-            <td>details</td>
-            <td>150$</td>
-            <td>12/05/2010</td>
-
-            <!-- <td><a href="#"><img src="images/user_edit.png" alt="" title="" border="0"></a></td> -->
-            <!-- <td><a href="#" class="ask"><img src="images/trash.png" alt="" title="" border="0"></a></td> -->
-        </tr>
-        
-    	<tr>
-        	<td><input type="checkbox" name=""></td>
-            <td>Product name</td>
-            <td>details</td>
-            <td>150$</td>
-            <td>12/05/2010</td>
-
-            <!-- <td><a href="#"><img src="images/user_edit.png" alt="" title="" border="0"></a></td> -->
-            <!-- <td><a href="#" class="ask"><img src="images/trash.png" alt="" title="" border="0"></a></td> -->
-        </tr>    
-        
     </tbody>
 </table>

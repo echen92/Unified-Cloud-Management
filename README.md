@@ -27,12 +27,12 @@ Create views necessary for functionality and dialogs (templates for storage cont
 
 Week 3
 _____________
-Integrate jQuery/AJAX to make all operations inlined
-View files currently in storage, free space available
-Amazon S3: Finish up file views/upload/download files
-
+Integrate jQuery/AJAX to make loading pages seamless
+View files currently in storage, size of each file for
+- Amazon S3: Finish up file views/upload/download files
+- Dropbox: Display files and size of each, upload/download files
 
 Week 4
 _____________
-Add file/folder sharing functionality (manage permissions and share link)
-Play/view/load content from files/media within the drive (stream music/video, display text)
+Finish up integration of Amazon and Dropbox
+Integrate Google Drive views/upload/downloads (saved for last because of the API complexity)

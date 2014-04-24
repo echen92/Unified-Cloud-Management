@@ -16,13 +16,10 @@
 <table class="table table-condensed table-responsive" id="rounded-corner">
     <thead>
     	<tr>
-        	<th scope="col" class="rounded-company"></th>
             <th scope="col" class="rounded">Name</th>
             <th scope="col" class="rounded">Type</th>
             <th scope="col" class="rounded">Size</th>
             <th scope="col" class="rounded">Modified</th>
-{#            <th scope="col" class="rounded">Edit</th>#}
-            <th scope="col" class="rounded-q4">Delete</th>
         </tr>
     </thead>
     <tfoot>
@@ -33,22 +30,13 @@
         </tr>
     </tfoot>
     <tbody>
-{#        {% for f in folders %}#}
-{#            <tr>#}
-{#                <td><input type="checkbox"></td>#}
-{#                <td>{{ f }}</td>#}
-{#                <td>Folder</td>#}
-{#            </tr>#}
-            {% for fi in files %}
-                <tr>
-                    <td><input type="checkbox"></td>
-                    <td><a style="text-decoration: none" href="https://{{ bucketname }}.s3.amazonaws.com/{{ fi }}">{{ fi }}</a></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                </tr>
-            {% endfor %}
-{#        {% endfor %}#}
+        {% for fi in files %}
+            <tr>
+                <td><a style="text-decoration: none" href="#" onclick="location.href='https://{{ bucketname }}.s3.amazonaws.com/{{ fi }}'; return false;">{{ fi }}</a></td>
+                <td></td>
+                <td></td>
+                <td></td>
+            </tr>
+        {% endfor %}
     </tbody>
 </table>

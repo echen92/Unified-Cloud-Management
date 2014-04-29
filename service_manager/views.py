@@ -52,7 +52,7 @@ def amazon_file_view(request):
                       {"bucket": buckets[0].name},
                       ["starts-with", "$key", ""],
                       {"acl": "private"},
-                      {"success_action_redirect": "http://localhost:8000/dashboard#/service_manager/amazon/files"},
+                      {"success_action_redirect": "https://cs242-finalproj.herokuapp.com/dashboard#/service_manager/amazon/files"},
                       ["content-length-range", 0, 5368709120]  # 5GB file size limit in bytes
                   ]
         }
@@ -73,7 +73,7 @@ def amazon_file_view(request):
 
 
 def get_dropbox_auth_flow(web_app_session):
-    redirect_uri = "http://localhost:8000/service_manager/dropbox/auth_finish"
+    redirect_uri = "https://cs242-finalproj.herokuapp.com/service_manager/dropbox/auth_finish"
     return DropboxOAuth2Flow(settings.DROPBOX_KEY, settings.DROPBOX_SECRET, redirect_uri,
                              web_app_session, "dropbox-auth-csrf-token")
 

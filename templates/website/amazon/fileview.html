@@ -5,7 +5,7 @@
     <input type="hidden" name="AWSAccessKeyId" value="{{ clientid }}">
     <input type="hidden" name="acl" value="private">
     {# Appends bucket, key, and etag as query string params joined with the redirect URL, not sure how to obfuscate it #}
-    <input type="hidden" name="success_action_redirect" value="http://localhost:8000/dashboard#/service_manager/amazon/files">
+    <input type="hidden" name="success_action_redirect" value="https://cs242-finalproj.herokuapp.com/dashboard#/service_manager/amazon/files">
     <input type="hidden" name="policy" value={{ policy }}>
     <input type="hidden" name="signature" value={{ signature }}>
     {# <input type="hidden" name="Content-Type" value="file"> #}

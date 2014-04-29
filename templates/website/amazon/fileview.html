@@ -31,7 +31,7 @@
         </tr>
     </tfoot>
     <tbody>
-        {% for fi in files %}
+        {% for fi in file_names %}
             <tr>
                 <td><a style="text-decoration: none" href="#" onclick="location.href='https://{{ bucketname }}.s3.amazonaws.com/{{ fi }}'; return false;">{{ fi }}</a></td>
                 <td></td>

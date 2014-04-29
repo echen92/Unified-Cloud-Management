@@ -61,10 +61,11 @@ def amazon_file_view(request):
         signature = base64.b64encode(hmac.new(secretkey.encode(encoding='UTF-8'), policy_encoded, hashlib.sha1).digest())
 
         # Gets all keys of a bucket. Keys in folders will have folder name prepended
-        files = buckets[0].get_all_keys()
-        files = [f.name for f in files]
+        file_list = buckets[0].get_all_keys()
+        file_names = [f.name for f in file_list]
+        # size = [f.size for f in filesobjlist]
 
-        context = {'bucketname': buckets[0].name, 'files': files, 'clientid': appid,
+        context = {'bucketname': buckets[0].name, 'file_names': file_names, 'clientid': appid,
                    'policy': policy_encoded, 'signature': signature}
         return render(request, 'website/amazon/fileview.html', context)
     except:
@@ -118,15 +119,17 @@ def dropbox_file_view(request):
     The view for files/folders in a dropbox account
     """
     try:
-        # user = request.user
-        # token = SocialToken.objects.get(account=user, app=1).token  # App = 1 for dropbox, 2 for google
-        # if not token:  # Checks for existence of token
-        #     messages.add_message(request, messages.ERROR, 'You have not connected with a Dropbox account yet.')
-        #     return render('/dashboard')
-        #
-        # # Initiate a client session
-        # client = dropbox.client.DropboxClient(token)
-        return render(request, 'website/dropbox/fileview.html')
+        token = UserProfile.objects.get(user=request.user).dropbox_token
+        if not token:  # Checks for existence of token
+            messages.add_message(request, messages.ERROR, 'You have not connected with a Dropbox account yet.')
+            return render(request, 'website/dashboard.html')
+
+        # Initiate a client session and get root contents of Dropbox
+        client = DropboxClient(token)
+        root_contents = client.metadata('/')['contents']
+        context = {'root_contents': root_contents}
+
+        return render(request, 'website/dropbox/fileview.html', context)
     except:
         messages.add_message(request, messages.ERROR, 'Error accessing Dropbox files')
         return render(request, 'website/dropbox/fileview.html')

@@ -1,7 +1,9 @@
 import os
 BASE_DIR = os.path.realpath(os.path.dirname(__file__))
-    # os.path.dirname(os.path.dirname(__file__))
 SECRET_KEY = '@jgu6!u!7dc_6-&jyr9ul7gy13302+wr%zj%k%^)z0z+-^&cr('
+
+DROPBOX_KEY = os.environ.get('DROPBOX_KEY')
+DROPBOX_SECRET = os.environ.get('DROPBOX_SECRET')
 
 # Honor the 'X-Forwarded-Proto' header for request.is_secure()
 SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
@@ -17,11 +19,6 @@ INSTALLED_APPS = (
     'south',
     'bootstrap3',
     'django_extensions',
-    'allauth',
-    'allauth.account',
-    'allauth.socialaccount',
-    'allauth.socialaccount.providers.dropbox',
-    'allauth.socialaccount.providers.google',
     'website',
     'service_manager',
     'accounts',
@@ -39,17 +36,11 @@ MIDDLEWARE_CLASSES = (
 
 AUTHENTICATION_BACKENDS = (
     'django.contrib.auth.backends.ModelBackend',
-    # `allauth` specific authentication methods, such as login by e-mail
-    "allauth.account.auth_backends.AuthenticationBackend",
 )
 
 TEMPLATE_CONTEXT_PROCESSORS = (
     'django.contrib.auth.context_processors.auth',
-    # Required by allauth template tags
     "django.core.context_processors.request",
-    # allauth specific context processors
-    "allauth.account.context_processors.account",
-    "allauth.socialaccount.context_processors.socialaccount",
     "django.contrib.messages.context_processors.messages",
     'django.core.context_processors.static'
 )

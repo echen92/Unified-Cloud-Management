@@ -38,24 +38,6 @@ def logout(request):
     return redirect('/')
 
 
-@login_required
-def connect_amazon(request):
-    """
-    Connect Amazon account to user profile
-    """
-    if request.method == 'POST':
-        current_user = request.user
-        user_profile = UserProfile.objects.get(user=current_user)
-        client_id = request.POST.get('client_id')
-        secret_key = request.POST.get('secret_key')
-        user_profile.amazon_client_id = client_id
-        user_profile.amazon_secret = secret_key
-        user_profile.save()
-
-    messages.add_message(request, messages.SUCCESS, 'Successfully linked Amazon credentials')
-    # TODO: Redirect to user's file view properly
-    return redirect('/dashboard')
-
 def email_signup(request):
     """
     Create a user profile w/ an email and password

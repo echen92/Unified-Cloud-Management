@@ -7,7 +7,7 @@
         <h4 class="modal-title" id="cred-modal-label">Connect Amazon credentials</h4>
       </div>
       <div class="modal-body">
-        <form role="form" id="creds-form" method="POST" action="/accounts/connect_amazon">{% csrf_token %}
+        <form role="form" id="creds-form" method="POST" action="/service_manager/connect_amazon">{% csrf_token %}
           <div class="form-group">
             <label for="client-id">Client ID</label>
             <input type="text" class="form-control" name="client_id" id="client-id" placeholder="Client ID"><br/>

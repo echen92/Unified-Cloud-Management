@@ -13,27 +13,27 @@ The app will be written mainly in Django and Python, with an sqlite database for
 
 Week 1
 _____________
-Design of and setting up models for the user profile
-Basic views and user profile login
-Spike code to make sure API can be properly used
+- Design of and setting up models for the user profile
+- Basic views and user profile login
+- Spike code to make sure API can be properly used
 
 
 Week 2
 _____________
-Begin integrating services into app
-Upload and download files to/from the service
-Create views necessary for functionality and dialogs (templates for storage contents, dialog confirmations, etc)
+- Begin integrating services into app
+- Upload and download files to/from the service
+- Create views necessary for functionality and dialogs (templates for storage contents, dialog confirmations, etc)
 
 
 Week 3
 _____________
-Integrate jQuery/AJAX to make loading pages seamless
-View files currently in storage, size of each file for
-- Amazon S3: Finish up file views/upload/download files
-- Dropbox: Display files and size of each, upload/download files
+- Integrate jQuery/AJAX to make loading pages seamless
+- View files currently in storage, size of each file for
+-- Amazon S3: Finish up file views/upload/download files
+-- Dropbox: Display files and size of each, upload/download files
 
 Week 4
 _____________
-Finish up integration of Amazon and Dropbox
-Integrate Google Drive views/upload/downloads (saved for last because of the API complexity)
-Possibly refactor backend to include metadata information about files
+- Finish up integration of Amazon and Dropbox
+- Integrate Google Drive views/upload/downloads (saved for last because of the API complexity)
+- Possibly refactor backend to include metadata information about files

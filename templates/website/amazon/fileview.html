@@ -1,5 +1,5 @@
 {% load bootstrap3 %}
-
+{% bootstrap_messages %}
 <form action="https://{{ bucketname }}.s3.amazonaws.com/" method="POST" enctype="multipart/form-data">
     <input type="hidden" name="key" value="${filename}">
     <input type="hidden" name="AWSAccessKeyId" value="{{ clientid }}">

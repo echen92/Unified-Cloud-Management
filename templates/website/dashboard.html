@@ -1,5 +1,5 @@
 {% load bootstrap3 %}
-{% load socialaccount %}
+{% load token_exists %}
 
 <!DOCTYPE html>
 <html lang="en">
@@ -128,10 +128,12 @@
 							</a>
                             <ul class="dropdown-menu">
                                 <li><a target="_blank" href="https://www.dropbox.com">Service homepage</a></li>
-								<li><a href="{% provider_login_url "dropbox" process="connect" next="/service_manager/dropbox/upgrade_token" %}">Connect with service</a></li>
-								<li>
-                                    <a href="/service_manager/dropbox/files" class="active ajax-link">My files</a>
-								</li>
+                                {% if user|token_exists:"dropbox" == False %}
+								    <li><a href="/service_manager/dropbox/auth_start">Connect Dropbox account</a></li>
+                                {% else %}
+                                    <li><a href="/service_manager/dropbox/auth_start">Link different account</a></li>
+                                {% endif %}
+								<li><a href="/service_manager/dropbox/files" class="active ajax-link">My files</a></li>
                             </ul>
                         </li>
 						<li class="dropdown">
@@ -141,7 +143,7 @@
 							</a>
                             <ul class="dropdown-menu">
                                 <li><a target="_blank" href="https://drive.google.com">Service homepage</a></li>
-								<li><a href="{% provider_login_url "google" process="connect" next="/dashboard" %}">Connect with service</a></li>
+								<li><a href="#">Connect with Google</a></li>
 								<li><a href="/service_manager/google/files" class="active ajax-link">My files</a></li>
                             </ul>
                         </li>
@@ -153,7 +155,12 @@
                             <ul class="dropdown-menu">
                                 <li><a target="_blank" href="https://aws.amazon.com/s3/">Service homepage</a></li>
                                 {% include 'website/amazon/amazon_modal.html'%}
-								<li><a data-toggle="drop-modal" onclick="$('#amazon-credentials').modal('show');">Connect with service</a></li>
+                                {# Change what is displayed depending if token exists in user profile #}
+                                {% if user|token_exists:"amazon" == True %}
+								    <li><a data-toggle="drop-modal" onclick="$('#amazon-credentials').modal('show');">Change credentials</a></li>
+                                {% else %}
+                                    <li><a data-toggle="drop-modal" onclick="$('#amazon-credentials').modal('show');">Connect AWS account</a></li>
+                                {% endif %}
 								<li><a href="/service_manager/amazon/files" class="active ajax-link">My files</a></li>
                             </ul>
                         </li>

@@ -13,6 +13,7 @@ class UserProfile(models.Model):
     user = models.OneToOneField(User)
     amazon_client_id = models.CharField(max_length=50, blank=True)
     amazon_secret = models.CharField(max_length=50, blank=True)
+    dropbox_token = models.CharField(max_length=200, blank=True)
     gender = models.CharField(max_length=1, default='M')
     services = models.ManyToManyField(Service, blank=True)
 

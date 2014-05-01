@@ -170,7 +170,8 @@ def dropbox_upload(request):
             print 'uploaded: ', response
 
         # print request.FILES
-        return render(request, 'website/dropbox/fileview.html')
+        messages.add_message(request, messages.SUCCESS, 'File uploaded successfully')
+        return redirect('/dashboard')
 
 @login_required
 def google_file_view(request):

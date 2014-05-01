@@ -5,7 +5,7 @@ register = template.Library()
 @register.filter()
 def get_dict_item(dict, key):
     """
-    Filter to get item from dictionary
+    Custom filter to get an item from dictionary. Returns None if key doesn't exist
     """
     value = dict.get(key)
     if value is None:

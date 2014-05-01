@@ -4,10 +4,12 @@ import hashlib
 import hmac
 import json
 import boto
-from django.http import HttpResponseBadRequest, HttpResponseForbidden
+from boto.exception import S3ResponseError
+from django.http import HttpResponseBadRequest, HttpResponseForbidden, HttpResponse
 from django.contrib import messages
 from django.conf import settings
 from django.contrib.auth.decorators import login_required
+from dropbox import rest
 from accounts.models import UserProfile
 from django.shortcuts import render, redirect
 from dropbox.client import DropboxOAuth2Flow, DropboxClient
@@ -68,9 +70,10 @@ def amazon_file_view(request):
         context = {'bucketname': buckets[0].name, 'file_names': file_names, 'clientid': appid,
                    'policy': policy_encoded, 'signature': signature}
         return render(request, 'website/amazon/fileview.html', context)
-    except:
+    except Exception, e:
         messages.add_message(request, messages.ERROR, 'Something went wrong communicating with Amazon S3.')
-        return render(request, 'website/amazon/fileview.html')
+        print str(e)
+        return redirect('/dashboard#/service_manager/dropbox/files')
 
 
 def get_dropbox_auth_flow(web_app_session):
@@ -127,13 +130,47 @@ def dropbox_file_view(request):
         # Initiate a client session and get root contents of Dropbox
         client = DropboxClient(token)
         root_contents = client.metadata('/')['contents']
-        context = {'root_contents': root_contents}
+        for data in root_contents:
+            if not data['is_dir']:
+                data['url'] = client.media(data['path'])['url']
 
+        context = {'root_contents': root_contents}
         return render(request, 'website/dropbox/fileview.html', context)
-    except:
+    except Exception, e:
         messages.add_message(request, messages.ERROR, 'Error accessing Dropbox files')
+        print str(e)
         return render(request, 'website/dropbox/fileview.html')
 
+
+@login_required
+def dropbox_upload(request):
+    if request.method == 'POST':
+        # POST-ed file, file name, path to upload to
+        fupload = request.FILES['file']
+        fname = fupload.name
+        fsize = fupload.size
+        path = '/' + fname
+
+        # Make connection to dropbox API
+        token = UserProfile.objects.get(user=request.user).dropbox_token
+        client = DropboxClient(token)
+
+        if fupload.multiple_chunks():  # If file is large enough to require chunked uploading
+            uploader = client.get_chunked_uploader(fupload, fname)
+            print 'uploading: ', fsize
+            while uploader.offset < fsize:
+                try:
+                    upload = uploader.upload_chunked()
+                except rest.ErrorResponse, e:
+                    print 'ERROR WHILE UPLOADING CHUNKED: ', str(e)
+
+            uploader.finish(path)
+        else:
+            response = client.put_file(path, fupload)
+            print 'uploaded: ', response
+
+        # print request.FILES
+        return render(request, 'website/dropbox/fileview.html')
 
 @login_required
 def google_file_view(request):

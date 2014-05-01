@@ -1,6 +1,12 @@
 {% load bootstrap3 %}
 {% load get_dict_item %}
 {% bootstrap_messages %}
+
+<form action="service_manager/dropbox/upload" method="POST" enctype="multipart/form-data">{% csrf_token %}
+    File to upload to Dropbox:
+    <input name="file" type="file">
+    <input type="submit" value="Upload File to Dropbox">
+</form>
 <table class="table table-condensed table-responsive" id="rounded-corner">
     <thead>
     	<tr>
@@ -18,9 +24,10 @@
         </tr>
     </tfoot>
     <tbody>
+        {# root_contents is a list of dictionaries #}
         {% for item in root_contents %}
             <tr>
-                <td>{{ item|get_dict_item:'path' }}</td>
+                <td><a href="{{ item|get_dict_item:'url' }}">{{ item|get_dict_item:'path' }}</a></td>
                 <td>{{ item|get_dict_item:'mime_type' }}</td>
                 <td>{{ item|get_dict_item:'size' }}</td>
                 <td>{{ item|get_dict_item:'modified' }}</td>
